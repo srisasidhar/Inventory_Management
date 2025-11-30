@@ -9,7 +9,14 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # DEBUG = os.getenv("DEBUG") == "True"
 # ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 DEBUG = False  # only in deployment
-ALLOWED_HOSTS = ["your-service-name.onrender.com"]
+import os
+
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    os.getenv("RENDER_EXTERNAL_HOSTNAME", ""),  # Auto maps your Render URL
+]
+
 
 
 INSTALLED_APPS = [
