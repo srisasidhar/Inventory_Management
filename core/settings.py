@@ -5,8 +5,11 @@ import os
 load_dotenv()
 
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG") == "True"
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+# DEBUG = os.getenv("DEBUG") == "True"
+# ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+DEBUG = False  # only in deployment
+ALLOWED_HOSTS = ["your-service-name.onrender.com"]
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
