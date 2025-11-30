@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Available Stock</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    th { background: #f5f5f5; }
+    .low { color: red; font-weight: bold; }
+    .ok { color: green; font-weight: bold; }
+    .btn { padding: 8px 12px; border: 1px solid #333; background: #f5f5f5; cursor: pointer; margin-bottom: 16px; }
+    .btn:hover { background: #eaeaea; }
+  </style>
+</head>
+<body>
+  <!-- Back button -->
+  <a href="{% url 'home' %}"><button class="btn">← Back to Home</button></a>
+
+  <h1>Available Stock</h1>
+
+  {% if stocks %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in stocks %}
+          <tr>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.quantity }}</td>
+            <td>
+              {% if stock.quantity <= stock.reorder_threshold %}
+                <span class="low">🔴 Low Stock</span>
+              {% else %}
+                <span class="ok">🟢 In Stock</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No stocks available.</p>
+  {% endif %}
+</body>
+</html>

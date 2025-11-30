@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inventory Home</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 24px; }
+    .btn { padding: 10px 16px; border: 1px solid #333; background: #f5f5f5; cursor: pointer; }
+    .btn:hover { background: #eaeaea; }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Inventory Management</h1>
+  <p>Use the button below to view your current stock.</p>
+
+  <a href="{% url 'stock_list' %}">
+    <button class="btn">View Stock</button>
+  </a>
+</body>
+</html>
